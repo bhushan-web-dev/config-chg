@@ -5,41 +5,37 @@ namespace Divido\Chg;
 require_once './interfaces/FileHandler.interface.php';
 
 class FileLoader implements iterate, fetch {
-    public $configfiles = [];
-    public $allfiles = [];
     public $destinationdir = '';
-    public $currentfiletype = '';
     
-    function __construct($dir, $filetype) {
+    function __construct($dir) {
         $this->destinationdir = $dir;
-        $this->currentfiletype = $filetype;
     }
 
     function get_files_from_directory() {
         try {
+            $i = 1;
             $destinationdir = new \DirectoryIterator($this->destinationdir);
             foreach ($destinationdir as $file) {
                 if ($file->isFile() && $fileext = $file->getExtension()) {
-                    $this->allfiles[] = ['filename' => $file->getFilename(), 'extension' => strtoupper($fileext)];
-                    // echo $fileinfo->getFilename() . '<br/>';
-                    // echo $fileinfo->getExtension() . '<br/>';
+                    $allfiles[] = ['id' => $i, 'filename' => $file->getFilename(), 'extension' => strtoupper($fileext)];
+                    $i++;
                 }
             }
-            return $this->allfiles;
+            return $allfiles;
         } catch (\Throwable $th) {
             echo "Error: There was a problem in accessing contents of given directory.";
             throw $th;
         }
     }
 
-    function fetch_files_with_filetype() {
+    function fetch_files_with_filetype($files, $ext) {
         try {
-            if($this->destinationdir !== '' && $this->destinationdir !== null && $this->allfiles) {
-                $this->configfiles = array_map(function($item) {
-                    if ($item['extension'] === strtoupper($this->currentfiletype)){
-                        return $item['filename'];
+            if($files && count($files) > 0) {
+                $this->configfiles = array_map(function($item)  use ($ext){
+                    if ($item['extension'] === strtoupper($ext)){
+                        return $item;
                     }
-                }, $this->allfiles);
+                }, $files);
                 
                 return $this->configfiles;
             }

@@ -7,11 +7,11 @@ interface iterate {
 }
 
 interface fetch {
-    public function fetch_files_with_filetype();
+    public function fetch_files_with_filetype($files, $ext);
 }
 
 interface validate {
-    public function validate_files();
+    public function validate_files($files);
 }
 
 interface process {
