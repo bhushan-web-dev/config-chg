@@ -1,0 +1,32 @@
+.row {
+    width: 100%;
+    border: 1px #cfcece solid;
+}
+
+.col {
+    display: inline-block;
+}
+
+.fl-left {
+    float: left;
+}
+
+.il-block {
+    display: inline-block;
+}
+
+.wid-5 {
+    width: 5%;
+}
+
+.wid-10 {
+    width: 10%;
+}
+
+.wid-50 {
+    width: 50%;
+}
+
+.row input {
+    border: 0px;
+}
