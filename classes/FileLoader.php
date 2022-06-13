@@ -2,7 +2,7 @@
 
 namespace Divido\Chg;
 
-require_once './interfaces/FileHandler.interface.php';
+require_once './interfaces/FileHandlerInterface.php';
 
 /**
  * Class to get files based on specific criteria
@@ -62,7 +62,6 @@ class FileLoader implements iterate, fetch
                 $configfiles = array_filter($files, function ($item) use ($ext) {
                     return $item['extension'] === strtoupper($ext);
                 });
-
                 return $configfiles;
             }
         } catch (\Throwable $th) {

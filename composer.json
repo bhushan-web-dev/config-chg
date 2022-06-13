@@ -1,2 +1,19 @@
 {
+    "name": "divido/chg",
+    "description": "Divido Config Challenge",
+    "autoload": {
+        "psr-4": {
+            "Divido\\Chg\\": "classes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bhushan Palsapure"
+        }
+    ],
+    "minimum-stability": "dev",    
+    "require-dev": {
+        "phpunit/phpunit": "9"
+    },
+    "require": {}
 }

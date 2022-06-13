@@ -4,8 +4,7 @@
 * This page acts as View part where all the UI is shown and POST request for each stage of parsing are handled.
 */
 namespace Divido\Chg;
-
-require_once './Configurator.php';
+require_once __DIR__ . '/vendor/autoload.php';
 require_once './constants.php';
 
 /**

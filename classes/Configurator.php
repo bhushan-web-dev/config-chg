@@ -2,11 +2,8 @@
 
 namespace Divido\Chg;
 
-use Divido\Chg\{FileLoader as FL, FileProcessor as FP};
+use Divido\Chg\{FileLoader, FileProcessor};
 use Throwable;
-
-require_once './classes/FileLoader.class.php';
-require_once './classes/FileProcessor.class.php';
 
 /**
  * Class to control main functions for fetching and parsing configuration files
@@ -35,7 +32,7 @@ class Configurator
      * @return array
      * @throws Throwable
      */
-    function show_files_with_given_extension(string $ext): array
+    public function show_files_with_given_extension(string $ext): array
     {
         $fileswithtype = [];
         try {
@@ -86,7 +83,7 @@ class Configurator
      * @return object
      * @throws Throwable
      */
-    function validate_and_process(array $order)
+    public function validate_and_process(array $order)
     {
         try {
             /*
@@ -121,7 +118,7 @@ class Configurator
      * It checks the values is present in the stored Session variable and returns that value
      * @param string $str
      */
-    function get_config(string $str)
+    public function get_config(string $str)
     {
         try {
             if ($globalconfig = $_SESSION['globalconfig']) {

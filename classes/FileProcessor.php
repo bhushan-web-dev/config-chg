@@ -5,7 +5,7 @@ namespace Divido\Chg;
 use stdClass;
 use Throwable;
 
-require_once './interfaces/FileHandler.interface.php';
+require_once './interfaces/FileHandlerInterface.php';
 
 /**
  * Class to perform specific processing on files
@@ -91,7 +91,7 @@ class FileProcessor implements validate, process
      * @return object
      */
     function generate_config_object(object $obj, object $config): object
-    {          
+    {
         /* 
         * Iterate through each object as key value pair
         */
