@@ -22,7 +22,7 @@ class FileLoaderTest extends TestCase
             [ 'id' => 4, 'filename' => 'config.local.txt', 'extension' => 'JSON']
         ], $fileloader->get_files_from_directory());
     }
-
+    
     public function testGetFilesWithFiletype() {
         $fileloader = new FileLoader(DIRECTORY);
         $this->assertEquals([ 
@@ -38,7 +38,7 @@ class FileLoaderTest extends TestCase
         [ 'id' => 2, 'filename' => 'config.invalid.txt', 'extension' => 'TXT'], 
         [ 'id' => 3, 'filename' => 'config.txt', 'extension' => 'TXT'], 
         [ 'id' => 4, 'filename' => 'config.local.txt', 'extension' => 'TXT']], 'json'));
-    
+        
         $this->assertNotEquals([ 
             [ 'id' => 1, 'filename' => 'config.also_invalid.json', 'extension' => 'JSON'], 
             [ 'id' => 2, 'filename' => 'config.invalid.json', 'extension' => 'JSON'], 
@@ -54,3 +54,5 @@ class FileLoaderTest extends TestCase
         [ 'id' => 4, 'filename' => 'config.local.txt', 'extension' => 'TXT']], 'txt'));
     }
 }
+
+//EOF

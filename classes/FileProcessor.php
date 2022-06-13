@@ -8,28 +8,32 @@ use Throwable;
 require_once './interfaces/FileHandlerInterface.php';
 
 /**
- * Class to perform specific processing on files
- * Class FileLoader
- * @package Divido\Chg
- */
+* Class to perform specific processing on files
+* Class FileLoader
+* @package Divido\Chg
+*/
 class FileProcessor implements validate, process
 {
     public $globalconfiguration;
-
     /**
-     * @param string $dir
-     */
-    function __construct($dir)
+    * @var string
+    */
+    public $destinationdir;
+    
+    /**
+    * @param string $dir
+    */
+    public function __construct(string $dir)
     {
         $this->destinationdir = $dir;
     }
-
+    
     /**
-     * Function to determine if a file is valid or invalid and then list it acoordingly
-     * @param array $configfiles
-     * @return array
-     */
-    function get_valid_invalid_files(array $configfiles): array
+    * Function to determine if a file is valid or invalid and then list it acoordingly
+    * @param array $configfiles
+    * @return array
+    */
+    public function get_valid_invalid_files(array $configfiles): array
     {
         $filevalidity = [];
         try {
@@ -53,14 +57,14 @@ class FileProcessor implements validate, process
             throw $th;
         }
     }
-
+    
     /**
-     * Function to process given list of files and then generate merged/combined configuration out of them
-     * @param array $filestoprocess
-     * @return object
-     * @throws Throwable
-     */
-    function process_files(array $filestoprocess): object
+    * Function to process given list of files and then generate merged/combined configuration out of them
+    * @param array $filestoprocess
+    * @return object
+    * @throws Throwable
+    */
+    public function process_files(array $filestoprocess): object
     {
         try {            
             /* 
@@ -74,7 +78,8 @@ class FileProcessor implements validate, process
                 $json = json_decode(file_get_contents($this->destinationdir . '/' . $processfile));          
                 /* 
                 * Pass the JSON object to generate config obect out of current file. 
-                * $config either contains empty object (first iteration) or latest merged configuration for subsequent iterations.
+                * $config either contains empty object (first iteration) or latest merged configuration for 
+                * subsequent iterations.
                 */
                 $this->globalconfiguration = $this->generate_config_object($json, $config);
             }
@@ -84,13 +89,13 @@ class FileProcessor implements validate, process
             throw $th;
         }
     }
-
+    
     /**
-     * @param object $obj
-     * @param object $config
-     * @return object
-     */
-    function generate_config_object(object $obj, object $config): object
+    * @param object $obj
+    * @param object $config
+    * @return object
+    */
+    public function generate_config_object(object $obj, object $config): object
     {
         /* 
         * Iterate through each object as key value pair

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Interfaces to specify operations which can be performed on given files.
- * Each class implementing the below interfaces need to make sure that they implement it.
- * Otherwise it'll through error
- * @package Divido\Chg
- */
+* Interfaces to specify operations which can be performed on given files.
+* Each class implementing the below interfaces need to make sure that they implement it.
+* Otherwise it'll through error
+* @package Divido\Chg
+*/
 namespace Divido\Chg;
 
 interface iterate
